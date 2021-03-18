@@ -2,6 +2,7 @@ from gamelib import Sprite
 from dir_consts import *
 import tkinter as tk
 
+
 class Dot(Sprite):
     def __init__(self, app, x, y, photo_image=None):
         super().__init__(app, 'images/dot.png', x, y, photo_image=photo_image)
@@ -51,7 +52,7 @@ class Maze:
         self.has_active_dots = {}
         for i in range(self.get_height()):
             for j in range(self.get_width()):
-                self.has_active_dots[(i,j)] = Maze.MAP[i][j] == Maze.DOT_CHAR
+                self.has_active_dots[(i, j)] = Maze.MAP[i][j] == Maze.DOT_CHAR
 
     def init_maze_sprites(self):
         self.wall_image = tk.PhotoImage(file='images/wall.png')     # --- create the photo
@@ -98,8 +99,8 @@ class Maze:
         return Maze.MAP[r][c] == Maze.WALL_CHAR
 
     def has_dot_at(self, r, c):
-        if (r,c) in self.has_active_dots:
-            return self.has_active_dots[(r,c)]
+        if (r, c) in self.has_active_dots:
+            return self.has_active_dots[(r, c)]
         else:
             return False
 
