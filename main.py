@@ -56,6 +56,21 @@ class PacmanGame(GameApp):
         self.elements.append(self.pacman1)
         self.elements.append(self.pacman2)
 
+        self.pacman1_score = 0
+        self.pacman2_score = 0
+
+    def update_scores(self):
+        self.pacman1_score_text.set_text(f'P1: {self.pacman1_score}')
+        self.pacman2_score_text.set_text(f'P2: {self.pacman2_score}')
+
+    def dot_eaten_by_pacman1(self):
+        self.pacman1_score += 1
+        self.update_scores()
+
+    def dot_eaten_by_pacman2(self):
+        self.pacman2_score += 1
+        self.update_scores()
+
     def pre_update(self):
         pass
 
