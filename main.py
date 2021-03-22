@@ -73,7 +73,8 @@ class Pacman(Sprite):
 
                 # TODO: 
                 #   - call all the observers here
-                self.dot_eaten_observers()
+                for observer in self.dot_eaten_observers:
+                    observer()
 
             if self.maze.is_movable_direction(r, c, self.next_direction):
                 self.direction = self.next_direction
@@ -115,8 +116,8 @@ class PacmanGame(GameApp):
         # TODO:
         #   - register self.dot_eaten_by_pacman1 to self.pacman1's observers
         #   - register self.dot_eaten_by_pacman2 to self.pacman2's observers
-        self.pacman1.dot_eaten_observers = self.dot_eaten_by_pacman1
-        self.pacman2.dot_eaten_observers = self.dot_eaten_by_pacman2
+        self.pacman1.dot_eaten_observers.append(self.dot_eaten_by_pacman1)
+        self.pacman2.dot_eaten_observers.append(self.dot_eaten_by_pacman2)
 
     def update_scores(self):
         self.pacman1_score_text.set_text(f'P1: {self.pacman1_score}')
